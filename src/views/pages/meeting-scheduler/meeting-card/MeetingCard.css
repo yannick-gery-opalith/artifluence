@@ -1,0 +1,14 @@
+.MuiCardHeader-content,
+.MuiCardHeader-content > span {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.color-swatch {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 5px;
+  background-color: #808080;
+}
