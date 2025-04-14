@@ -105,11 +105,7 @@ const menuItemStyles = (verticalNavOptions, theme) => {
           marginInlineEnd: theme.spacing(2)
         }),
       '& > i, & > svg': {
-        fontSize: '.75em',
-        width: '1.25rem',
-        height: '1.25rem',
-        lineHeight: '1.25rem',
-        textAlign: 'center'
+        fontSize: 'inherit'
       }
     }),
     prefix: {

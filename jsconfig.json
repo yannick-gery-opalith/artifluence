@@ -45,9 +45,6 @@
       ]
     }
   },
-  "eslint": {
-    "ignoreDuringBuilds": true,
-  },
   "include": [
     "next.config.mjs",
     "tailwind.config.js",

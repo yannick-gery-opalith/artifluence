@@ -46,34 +46,6 @@ export const confirmUrlInChildren = (children, url) => {
   return false
 }
 
-export const confirmRouteInChildren = (children, url) => {
-  if (!children) {
-    return false
-  }
-
-  if (Array.isArray(children)) {
-    return children.some(child => confirmRouteInChildren(child, url))
-  }
-
-  if (isValidElement(children)) {
-    const { component, href, exactMatch, activeUrl, routes, children: subChildren } = children.props
-
-    const activeRoutes = routes
-
-    var hasActiveRoute = activeRoutes && activeRoutes.length
-
-    if (hasActiveRoute) {
-      return activeRoutes.some(route => url.includes(route))
-    }
-
-    if (subChildren) {
-      return confirmRouteInChildren(subChildren, url)
-    }
-  }
-
-  return false
-}
-
 /*
  * Reason behind mapping the children of the horizontal-menu component to the vertical-menu component:
  * The Horizontal menu components will not work inside of Vertical menu on small screens.

@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 // Next Imports
 import { useRouter } from 'next/navigation'
@@ -17,19 +17,8 @@ import Button from '@mui/material/Button'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Divider from '@mui/material/Divider'
 
-import {
-  useAuthState,
-  useCreateUserWithEmailAndPassword,
-  useSignInWithGithub,
-  useSignInWithGoogle,
-  useSignInWithMicrosoft
-} from 'react-firebase-hooks/auth'
-
-import classnames from 'classnames'
-
-import { auth } from '../firebase/config'
-
 // Third-party Imports
+import classnames from 'classnames'
 
 // Component Imports
 import Link from '@components/Link'
@@ -70,8 +59,6 @@ const MaskImg = styled('img')({
 const LoginV2 = ({ mode }) => {
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
   // Vars
   const darkImg = '/images/pages/auth-mask-dark.png'
@@ -83,7 +70,6 @@ const LoginV2 = ({ mode }) => {
 
   // Hooks
   const router = useRouter()
-  const [user] = useAuthState(auth)
   const { settings } = useSettings()
   const theme = useTheme()
   const hidden = useMediaQuery(theme.breakpoints.down('md'))
@@ -98,32 +84,6 @@ const LoginV2 = ({ mode }) => {
   )
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
-
-  const [createUserWithEmailAndPassword, newUser, loading, error] = useCreateUserWithEmailAndPassword(auth)
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth)
-  const [signInWithGithub, githubUser, githubLoading, githubError] = useSignInWithGithub(auth)
-  const [signInWithMicrosoft, microsoftUser, microsoftLoading, microsoftError] = useSignInWithMicrosoft(auth)
-
-  useEffect(() => {
-    var u = user || newUser || googleUser || githubUser || microsoftUser
-
-    if (u) {
-      console.log(u)
-      router.push('/dashboard')
-    }
-  }, [user, newUser, googleUser, githubUser, microsoftUser, router])
-
-  useEffect(() => {
-    if (error || googleError || githubError || microsoftError) {
-      console.log(githubError)
-      alert('error')
-    }
-  }, [error, googleError, githubError, microsoftError])
-
-  const handleEmailSignIn = e => {
-    e.preventDefault()
-    createUserWithEmailAndPassword(email, password)
-  }
 
   return (
     <div className='flex bs-full justify-center'>
@@ -162,22 +122,13 @@ const LoginV2 = ({ mode }) => {
             }}
             className='flex flex-col gap-5'
           >
-            <CustomTextField
-              value={email}
-              onChange={e => setEmail(e.target.value)}
-              autoFocus
-              fullWidth
-              label='Email or Username'
-              placeholder='Enter your email or username'
-            />
+            <CustomTextField autoFocus fullWidth label='Email or Username' placeholder='Enter your email or username' />
             <CustomTextField
               fullWidth
               label='Password'
               placeholder='············'
               id='outlined-adornment-password'
               type={isPasswordShown ? 'text' : 'password'}
-              value={password}
-              onChange={e => setPassword(e.target.value)}
               slotProps={{
                 input: {
                   endAdornment: (
@@ -201,20 +152,23 @@ const LoginV2 = ({ mode }) => {
             </Button>
             <div className='flex justify-center items-center flex-wrap gap-2'>
               <Typography>New on our platform?</Typography>
-              <Typography component={Link} color='primary.main' href='/register'>
+              <Typography component={Link} color='primary.main'>
                 Create an account
               </Typography>
             </div>
             <Divider className='gap-2 text-textPrimary'>or</Divider>
             <div className='flex justify-center items-center gap-1.5'>
-              <IconButton className='text-facebook' size='small' onClick={() => signInWithMicrosoft()}>
-                <i className='fab fa-microsoft' />
+              <IconButton className='text-facebook' size='small'>
+                <i className='tabler-brand-facebook-filled' />
               </IconButton>
-              <IconButton className='text-textPrimary' size='small' onClick={() => signInWithGithub()}>
-                <i className='fab fa-github' />
+              <IconButton className='text-twitter' size='small'>
+                <i className='tabler-brand-twitter-filled' />
               </IconButton>
-              <IconButton className='text-error' size='small' onClick={() => signInWithGoogle()}>
-                <i className='fab fa-google' />
+              <IconButton className='text-textPrimary' size='small'>
+                <i className='tabler-brand-github-filled' />
+              </IconButton>
+              <IconButton className='text-error' size='small'>
+                <i className='tabler-brand-google-filled' />
               </IconButton>
             </div>
           </form>

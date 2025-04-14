@@ -22,23 +22,28 @@ const FooterContent = () => {
     >
       <p>
         <span className='text-textSecondary'>{`© ${new Date().getFullYear()}, Made with `}</span>
-        <span>{`🤖`}</span>
+        <span>{`❤️`}</span>
         <span className='text-textSecondary'>{` by `}</span>
-        <Link href='https://opalith.co' target='_blank' className='text-primary'>
-          Opalith
+        <Link href='https://pixinvent.com' target='_blank' className='text-primary uppercase'>
+          Pixinvent
         </Link>
       </p>
       {!isBreakpointReached && (
         <div className='flex items-center gap-4'>
-          <Link href='#' target='_blank' className='text-primary'>
-            Feature request
+          <Link href='https://themeforest.net/licenses/standard' target='_blank' className='text-primary'>
+            License
           </Link>
-          |
-          <Link href='https://docs.opalith.co' target='_blank' className='text-primary'>
-            API Documentation
+          <Link href='https://themeforest.net/user/pixinvent/portfolio' target='_blank' className='text-primary'>
+            More Themes
           </Link>
-          |
-          <Link href='https://support.opalith.co' target='_blank' className='text-primary'>
+          <Link
+            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+            target='_blank'
+            className='text-primary'
+          >
+            Documentation
+          </Link>
+          <Link href='https://pixinvent.ticksy.com' target='_blank' className='text-primary'>
             Support
           </Link>
         </div>

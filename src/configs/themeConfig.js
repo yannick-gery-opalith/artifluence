@@ -16,9 +16,9 @@
  * Another way is to clear the cookie from the browser's Application/Storage tab and then reload the page.
  */
 const themeConfig = {
-  templateName: 'Opalith',
-  homePageUrl: '/dashboard',
-  settingsCookieName: 'opalith-app',
+  templateName: 'Vuexy',
+  homePageUrl: '/home',
+  settingsCookieName: 'vuexy-mui-next-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
   semiDark: false, // true, false
@@ -27,7 +27,7 @@ const themeConfig = {
   compactContentWidth: 1440, // in px
   navbar: {
     type: 'fixed', // 'fixed', 'static'
-    contentWidth: 'wide', // 'compact', 'wide'
+    contentWidth: 'compact', // 'compact', 'wide'
     floating: true, //! true, false (This will not work in the Horizontal Layout)
     detached: true, //! true, false (This will not work in the Horizontal Layout or floating navbar is enabled)
     blur: true // true, false

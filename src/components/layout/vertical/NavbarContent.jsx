@@ -7,21 +7,9 @@ import classnames from 'classnames'
 import NavToggle from './NavToggle'
 import ModeDropdown from '@components/layout/shared/ModeDropdown'
 import UserDropdown from '@components/layout/shared/UserDropdown'
-import NotificationsDropdown from '@components/layout/shared/NotificationsDropdown'
 
 // Util Imports
 import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
-
-const notifications = [
-  {
-    avatarIcon: 'far fa-check',
-    title: 'Workspace created',
-    subtitle: 'You can now invite users to join you !',
-    avatarColor: 'success',
-    time: 'Apr 2, 10:30 AM',
-    read: false
-  }
-]
 
 const NavbarContent = () => {
   return (
@@ -31,7 +19,6 @@ const NavbarContent = () => {
         <ModeDropdown />
       </div>
       <div className='flex items-center'>
-        <NotificationsDropdown notifications={notifications} />
         <UserDropdown />
       </div>
     </div>

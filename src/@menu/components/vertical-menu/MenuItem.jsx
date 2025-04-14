@@ -84,26 +84,14 @@ const MenuItem = (props, ref) => {
   useEffect(() => {
     const href = rest.href || (component && typeof component !== 'string' && component.props.href)
 
-    const activeRoutes = rest.routes || (component && typeof component !== 'string' && component.props.routes)
-    var hasActiveRoute = activeRoutes && activeRoutes.length
-    var hasPartialMatch = false
-
-    if (hasActiveRoute) {
-      hasPartialMatch = activeRoutes.some(route => pathname.includes(route))
-    }
-
-    if (href || hasActiveRoute) {
+    if (href) {
       // Check if the current url matches any of the children urls
-      if (
-        (exactMatch ? pathname === href : activeUrl && pathname.includes(activeUrl)) ||
-        (hasActiveRoute && hasPartialMatch)
-      ) {
+      if (exactMatch ? pathname === href : activeUrl && pathname.includes(activeUrl)) {
         setActive(true)
       } else {
         setActive(false)
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])
 

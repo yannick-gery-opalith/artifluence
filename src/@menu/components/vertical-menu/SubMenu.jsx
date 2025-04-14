@@ -39,7 +39,7 @@ import useVerticalMenu from '../../hooks/useVerticalMenu'
 
 // Util Imports
 import { menuClasses } from '../../utils/menuClasses'
-import { confirmUrlInChildren, confirmRouteInChildren, renderMenuIcon } from '../../utils/menuUtils'
+import { confirmUrlInChildren, renderMenuIcon } from '../../utils/menuUtils'
 
 // Styled Component Imports
 import StyledMenuLabel from '../../styles/StyledMenuLabel'
@@ -242,7 +242,7 @@ const SubMenu = (props, ref) => {
     }
   }, [isCollapsed, level, active])
   useEffect(() => {
-    if (confirmUrlInChildren(children, pathname) || confirmRouteInChildren(children, pathname)) {
+    if (confirmUrlInChildren(children, pathname)) {
       openSubmenusRef?.current.push({ level, label, active: true, id })
     } else {
       if (defaultOpen) {
@@ -255,8 +255,7 @@ const SubMenu = (props, ref) => {
   // Change active state when the url changes
   useEffect(() => {
     // Check if the current url matches any of the children urls
-
-    if (confirmUrlInChildren(children, pathname) || confirmRouteInChildren(children, pathname)) {
+    if (confirmUrlInChildren(children, pathname)) {
       setActive(true)
 
       if (openSubmenusRef?.current.findIndex(submenu => submenu.id === id) === -1) {
